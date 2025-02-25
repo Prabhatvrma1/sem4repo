@@ -1,3 +1,4 @@
+#prabhat_sem4repo
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,8 +10,6 @@ app.use(express.json());
 mongoose.connect("mongodb://localhost:27017/blogDB", {
 
 });
-
-// Define Blog Schema & Model
 const blogSchema = new mongoose.Schema({
   title: String,
   content: String,
@@ -19,8 +18,6 @@ const blogSchema = new mongoose.Schema({
 });
 
 const Blog = mongoose.model("Blog", blogSchema);
-
-//  Route to get all blogs
 app.get("/api/blogs", async (req, res) => {
   try {
     const blogs = await Blog.find();
@@ -29,8 +26,6 @@ app.get("/api/blogs", async (req, res) => {
     res.status(500).json({ message: "Error fetching blogs", error });
   }
 });
-
-//  Route to get a single blog by ID
 app.get("/api/blogs/:id", async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
@@ -40,8 +35,6 @@ app.get("/api/blogs/:id", async (req, res) => {
     res.status(500).json({ message: "Error fetching blog", error });
   }
 });
-
-// ✅ Route to create a new blog
 app.post("/api/blogs", async (req, res) => {
   try {
     const newBlog = new Blog(req.body);
@@ -51,8 +44,6 @@ app.post("/api/blogs", async (req, res) => {
     res.status(500).json({ message: "Error creating blog", error });
   }
 });
-
-// ✅ Route to update a blog by ID
 app.put("/api/blogs/:id", async (req, res) => {
   try {
     const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -63,7 +54,6 @@ app.put("/api/blogs/:id", async (req, res) => {
   }
 });
 
-// ✅ Route to delete a blog by ID
 app.delete("/api/blogs/:id", async (req, res) => {
   try {
     const deletedBlog = await Blog.findByIdAndDelete(req.params.id);
@@ -73,7 +63,5 @@ app.delete("/api/blogs/:id", async (req, res) => {
     res.status(500).json({ message: "Error deleting blog", error });
   }
 });
-
-// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
