@@ -1,3 +1,4 @@
+#prabhat_sem4repo
 const express = require("express");
 const app = express();
 
@@ -6,7 +7,6 @@ app.get("/getProfile", (req, res) => {
     res.send(`Profile: ${username} ${age}`);
 });
 
-// Route for profile with params
 app.get("/profile/:username/:age", (req, res) => {
     const { username, age } = req.params;
     res.send(`Hi ${username}, Age: ${age}`);
@@ -16,7 +16,6 @@ app.listen(3000, () => {
     console.log("Server started on port 3000");
 });
 
-// Corrected usersData array
 let usersData = [
     {
         id: 1,
