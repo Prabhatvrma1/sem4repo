@@ -1,19 +1,16 @@
-# MongoDB Commands Usage Guide
+#prabhat_sem4repo
 
-## **1. Connecting to MongoDB**
+Connecting to MongoDB
 To start MongoDB shell, use:
-```sh
 mongosh
-```
 Example output:
-```sh
 Current Mongosh Log ID: 67bda6d6607ce29dfb79a1b
 Connecting to: mongodb://127.0.0.1:27017/
 Using MongoDB: 8.0.4
 Using Mongosh: 2.3.6
-```
 
-## **2. Switching to Database**
+
+**2. Switching to Database**
 To switch to a specific database (e.g., `g13`):
 ```sh
 use g13
